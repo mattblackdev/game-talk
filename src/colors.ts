@@ -1,0 +1,33 @@
+export const colors0x = {
+  Black: 0x282a36,
+  Current: 0x44475a,
+  Comment: 0x6272a4,
+  Red: 0xff5555,
+  Orange: 0xffb86c,
+  Yellow: 0xf1fa8c,
+  Green: 0x50fa7b,
+  Cyan: 0x8be9fd,
+  Purple: 0xbd93f9,
+  Pink: 0xff79c6,
+  Skin: 0xffbbbc,
+  White: 0xf8f8f2,
+  TrueWhite: 0xffffff,
+}
+
+export const colors = {
+  RealBlack: '#000000',
+  Black: '#282a36',
+  Current: '#44475a',
+  Comment: '#6272a4',
+  Red: '#ff5555',
+  Orange: '#ffb86c',
+  Yellow: '#f1fa8c',
+  Green: '#50fa7b',
+  Cyan: '#8be9fd',
+  Purple: '#bd93f9',
+  Pink: '#ff79c6',
+  Skin: '#ffa6b9',
+  White: '#f8f8f2',
+  TrueWhite: '#ffffff',
+  Transparent: '#00000000',
+}
