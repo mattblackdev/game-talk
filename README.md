@@ -21,9 +21,7 @@ npm start
 - Models (GLTF)
 - Player input
 - Interaction
-- Animations
 - Particles
-- Gameloop
 - Physics
 - Dialog
 - Water
