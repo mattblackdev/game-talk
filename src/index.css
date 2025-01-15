@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@font-face {
+  font-family: 'CascadiaCode';
+  src: url('/fonts/CascadiaCode.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-html,
 body,
 #root {
   width: 100%;
@@ -8,18 +13,10 @@ body,
   position: fixed;
   overflow: hidden;
   background-color: #282a36;
-  font-family: VT323;
-  font-size: 1.2rem;
+  font-family: 'CascadiaCode';
   color: #f8f8f2;
   padding: 0;
   margin: 0;
-}
-
-div,
-body,
-canvas {
-  user-select: none;
-  touch-action: none;
 }
 
 * {
