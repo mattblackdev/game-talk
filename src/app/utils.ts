@@ -1,4 +1,12 @@
-import { Euler, Quaternion, Vector3, Vector3Tuple, Vector4 } from 'three'
+import {
+  AnimationAction,
+  Euler,
+  LoopOnce,
+  Quaternion,
+  Vector3,
+  Vector3Tuple,
+  Vector4,
+} from 'three'
 import { colors0x } from './colors'
 import { generateUUID } from 'three/src/math/MathUtils.js'
 
@@ -76,4 +84,23 @@ export function randomScale(min = 0, max = 1) {
 
 export function uniqueId() {
   return generateUUID()
+}
+
+export function playAction(
+  name: string,
+  actions: Record<string, AnimationAction | null | undefined>
+) {
+  const action = actions[name]
+  if (action) {
+    action.clampWhenFinished = true
+    action.reset().fadeIn(0.1).setLoop(LoopOnce, 0).play()
+  }
+  return action
+}
+
+export function loopAction(
+  name: string,
+  actions: Record<string, AnimationAction | null | undefined>
+) {
+  return actions[name]?.fadeIn(0.1).reset().play()
 }

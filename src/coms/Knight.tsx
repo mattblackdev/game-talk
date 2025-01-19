@@ -33,7 +33,12 @@ export const animationSet = {
 export function EcctrlKnight({ children }: { children: ReactNode }) {
   return (
     <KeyboardControls map={keyboardMap}>
-      <Ecctrl animated camMoveSpeed={3} camInitDir={{ x: 0, y: -Math.PI }}>
+      <Ecctrl
+        animated
+        jumpVel={10}
+        camMoveSpeed={3}
+        camInitDir={{ x: 0, y: -Math.PI }}
+      >
         <EcctrlAnimation
           characterURL={'/models/knight.glb'}
           animationSet={animationSet}

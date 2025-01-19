@@ -12,10 +12,10 @@ export function Sauce({ children }: { children?: ReactNode }) {
 function Overlay() {
   const isMinionDefeated = useMinionStore((s) => s.status) === 'dead'
   return !isMinionDefeated ? (
-    <TypewriterWithLink link="09_Fight/index.tsx">
+    <TypewriterWithLink link="09_Fight/index.tsx:0:0">
       Press F to slash!
     </TypewriterWithLink>
   ) : (
-    <TypewriterWithTransition scene="Move">My hero!</TypewriterWithTransition>
+    <TypewriterWithTransition scene="Defend">My hero!</TypewriterWithTransition>
   )
 }

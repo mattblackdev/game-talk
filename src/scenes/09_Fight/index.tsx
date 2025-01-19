@@ -1,15 +1,21 @@
 import { useAnimations, useGLTF } from '@react-three/drei'
-import { CylinderCollider, quat, RigidBody } from '@react-three/rapier'
+import {
+  CuboidCollider,
+  CylinderCollider,
+  quat,
+  RigidBody,
+} from '@react-three/rapier'
 import { useEffect, useRef } from 'react'
-import { AnimationAction, Group, LoopOnce, Vector3 } from 'three'
+import { AnimationAction, Group, Vector3 } from 'three'
 import { create } from 'zustand'
+import { loopAction, playAction } from '../../app/utils'
 import { Ground } from '../../coms/Ground'
 import { EcctrlKnight } from '../../coms/Knight'
 import { Sky } from '../../coms/Sky'
 import { MinionModel } from '../../models/MinionModel'
 import { Scenery } from '../06_Models'
 import { Sauce } from './Sauce'
-import { SwordDamageSensor } from './SwordDamageSensor'
+import { useIsSwordDamaging } from './useIsSwordDamaging'
 
 export const useMinionStore = create(() => ({
   status: 'idle' as 'idle' | 'dying' | 'dead',
@@ -24,19 +30,13 @@ export function Fight() {
   console.log('status', status)
 
   useEffect(() => {
-    let action: AnimationAction | null = null
+    let action: AnimationAction | null | undefined
     if (status === 'dead') {
-      action = actions['Death_C_Pose']
-      if (action) {
-        action.clampWhenFinished = true
-        action.reset().fadeIn(0.1).setLoop(LoopOnce, 0).play()
-      }
+      action = playAction('Death_C_Pose', actions)
     } else if (status === 'dying') {
-      action = actions['Death_C_Skeletons']
-      action?.reset().fadeIn(0.1).setLoop(LoopOnce, 0).play()
+      action = playAction('Death_C_Skeletons', actions)
     } else {
-      action = actions['Idle']
-      action?.reset().play()
+      action = loopAction('Idle', actions)
     }
     return () => {
       // Fade out previous action
@@ -44,16 +44,28 @@ export function Fight() {
     }
   }, [status])
 
+  // True 700ms after sword strike
+  // begins, then false 100ms later.
+  const isDamaging = useIsSwordDamaging()
+
   return (
     <Sauce>
       <Sky />
       <Scenery />
 
       <EcctrlKnight>
-        <SwordDamageSensor />
+        {isDamaging ? (
+          <CuboidCollider
+            sensor
+            name="Sword"
+            args={[0.7, 0.1, 0.1]}
+            position={[-0.6, 0.5, 1]}
+            rotation={[0, Math.PI / 2 - 0.2, 0]}
+          />
+        ) : null}
       </EcctrlKnight>
 
-      <RigidBody name="Minion" position={[-5, 1, -5]}>
+      <RigidBody name="Minion" position={[-5, 1, -5]} rotation={[0, 1, 0]}>
         <CylinderCollider
           args={[1, 1]}
           sensor={status === 'dead'}
@@ -79,6 +91,7 @@ export function Fight() {
             }, 300)
           }}
         />
+
         <group ref={minionRef}>
           <MinionModel />
         </group>

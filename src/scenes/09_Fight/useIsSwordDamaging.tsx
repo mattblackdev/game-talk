@@ -6,8 +6,8 @@ export function useIsSwordDamaging() {
   const [isDamaging, setIsDamaging] = useState(false)
 
   useEffect(() => {
-    let damageStartTimeout: NodeJS.Timeout
-    let damageEndTimeout: NodeJS.Timeout
+    let damageStart: NodeJS.Timeout
+    let damageEnd: NodeJS.Timeout
 
     const activeDuration = 100
     const animationDelay = 700
@@ -17,12 +17,12 @@ export function useIsSwordDamaging() {
       (curAnimation) => {
         if (curAnimation !== animationSet.action4) return
 
-        clearTimeout(damageStartTimeout)
+        clearTimeout(damageStart)
 
-        damageStartTimeout = setTimeout(() => {
+        damageStart = setTimeout(() => {
           setIsDamaging(true)
 
-          damageEndTimeout = setTimeout(() => {
+          damageEnd = setTimeout(() => {
             setIsDamaging(false)
           }, activeDuration)
         }, animationDelay)
@@ -30,8 +30,8 @@ export function useIsSwordDamaging() {
     )
 
     return () => {
-      clearTimeout(damageStartTimeout)
-      clearTimeout(damageEndTimeout)
+      clearTimeout(damageStart)
+      clearTimeout(damageEnd)
       unsub()
     }
   }, [setIsDamaging])
