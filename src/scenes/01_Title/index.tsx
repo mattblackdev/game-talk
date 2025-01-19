@@ -10,7 +10,7 @@ export function Title() {
 function Overlay() {
   return (
     <>
-      <TypewriterWithTransition scene="Light">
+      <TypewriterWithTransition scene="Light" middle>
         <TitleText>3D Game Development with React</TitleText>
       </TypewriterWithTransition>
     </>

@@ -13,11 +13,11 @@ export function Sauce({ children }: { children?: ReactNode }) {
 function Overlay({ sceneRef }: { sceneRef: GroupRef }) {
   const isDone = sceneRef.current.children.find((o) => o.name === 'player')
   return !isDone ? (
-    <TypewriterWithLink dark link="06_Breath/index.tsx">
+    <TypewriterWithLink link="07_Breath/index.tsx:22:11">
       So... Where are you?
     </TypewriterWithLink>
   ) : (
-    <TypewriterWithTransition scene="Rest">
+    <TypewriterWithTransition scene="Move">
       Ah, there you are!
     </TypewriterWithTransition>
   )

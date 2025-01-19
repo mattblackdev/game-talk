@@ -5,7 +5,7 @@ export function Light() {
   return (
     <Sauce>
       {/* <Stars /> */}
-      {/* <Sky azimuth={0.5} /> */}
+      {/* <Sky azimuth={0.6} /> */}
     </Sauce>
   )
 }

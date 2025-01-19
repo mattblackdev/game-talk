@@ -1,13 +1,13 @@
-import { Physics } from '@react-three/rapier'
-import { Canvas } from './canvas'
 import { Overlay } from '../hooks/useOverlay'
+import { Canvas } from './canvas'
+import { Physics } from './physics'
 import { Scene } from './scene'
 
 export function App() {
   return (
     <>
       <Canvas>
-        <Physics gravity={[0, -10, 0]}>
+        <Physics>
           <Scene />
         </Physics>
       </Canvas>

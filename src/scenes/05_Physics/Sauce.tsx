@@ -22,12 +22,10 @@ function Overlay() {
   const hasCollided = useTrigger((s) => s.isTriggered)
 
   return !hasCollided ? (
-    <TypewriterWithLink dark link="05_Physics/index.tsx">
-      Hey man, <Pause ms={300} /> do me a solid.. Add a RigidBody?
+    <TypewriterWithLink link="05_Physics/index.tsx:28:13">
+      Hey, <Pause ms={300} /> wanna do me a solid? 😅
     </TypewriterWithLink>
   ) : (
-    <TypewriterWithTransition dark scene="Models">
-      Bouncy!
-    </TypewriterWithTransition>
+    <TypewriterWithTransition scene="Models">Bouncy!</TypewriterWithTransition>
   )
 }

@@ -12,18 +12,32 @@ export function Sauce({ children }: { children?: ReactNode }) {
 
 function Overlay({ sceneRef }: { sceneRef: GroupRef }) {
   const count = sceneRef.current.children.length - 2
-  const words =
-    [
-      "Ok.. Let's add some scenery!",
-      "That's... something",
-      'Getting there! Try Triplex to add more.',
-    ][count] ?? (count < 7 ? 'How about a few more?' : '')
 
-  return words ? (
-    <TypewriterWithLink dark link="06_Models/index.tsx">
-      {words}
-    </TypewriterWithLink>
-  ) : (
+  if (count < 1) {
+    return (
+      <TypewriterWithLink link="06_Models/index.tsx:19:11">
+        Ok.. Let's add some scenery!
+      </TypewriterWithLink>
+    )
+  }
+
+  if (count < 2) {
+    return (
+      <TypewriterWithLink link="06_Models/index.tsx:28:11">
+        That's... something..
+      </TypewriterWithLink>
+    )
+  }
+
+  if (count < 301) {
+    return (
+      <TypewriterWithLink link="06_Models/index.tsx:29:11">
+        How about a few more? 😄
+      </TypewriterWithLink>
+    )
+  }
+
+  return (
     <TypewriterWithTransition scene="Breath">Lovely!</TypewriterWithTransition>
   )
 }

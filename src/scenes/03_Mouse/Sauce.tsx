@@ -1,54 +1,40 @@
-import { useFrame, useThree } from '@react-three/fiber'
-import { ReactNode, useRef } from 'react'
+import { ReactNode } from 'react'
 import { create } from 'zustand'
-import { useOverlay } from '../../hooks/useOverlay'
 import { TypewriterWithLink } from '../../coms/typewriter/TypewriterWithLink'
 import { TypewriterWithTransition } from '../../coms/typewriter/TypewriterWithTransition'
+import { useOverlay } from '../../hooks/useOverlay'
 
 export function Sauce({ children }: { children: ReactNode }) {
-  const camera = useThree((s) => s.camera)
-  const lastRotation = useRef(camera.rotation.x)
-
-  useFrame(() => {
-    const rotation = Math.abs(camera.rotation.x - lastRotation.current)
-    lastRotation.current = camera.rotation.x
-    updateStep(rotation)
-  })
-
   useOverlay(<Overlay />)
-
   return children
 }
 
-const useStore = create(() => ({
-  hasRotated: 0,
-}))
-
-function updateStep(rotation: number) {
-  useStore.setState((s) => {
-    let { hasRotated } = s
-
-    if (!hasRotated && rotation > 0) {
-      hasRotated = 1
-    }
-
-    return {
-      hasRotated,
-    }
-  })
-}
-
 function Overlay() {
-  const { hasRotated } = useStore()
+  const hasRotated = useStore((s) => s.hasRotated)
 
-  const words = [
-    <TypewriterWithLink link={'03_Mouse/index.tsx'}>
-      Now.. how do we look around?
+  return [
+    <TypewriterWithLink link={'03_Mouse/index.tsx:8:11'} middle>
+      How do we look around?
     </TypewriterWithLink>,
-    <TypewriterWithTransition scene="Ground">
+    <TypewriterWithTransition scene="Ground" middle>
       Amazing!
     </TypewriterWithTransition>,
-  ]
+  ][!hasRotated ? 0 : 1]
+}
 
-  return words[hasRotated]
+const useStore = create<{ timeout?: NodeJS.Timeout; hasRotated: boolean }>(
+  () => ({
+    timeout: undefined,
+    hasRotated: false,
+  })
+)
+
+export const triggerNextStep = () => {
+  if (!useStore.getState().timeout) {
+    useStore.setState({
+      timeout: setTimeout(() => {
+        useStore.setState({ hasRotated: true })
+      }, 300),
+    })
+  }
 }

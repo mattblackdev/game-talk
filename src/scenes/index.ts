@@ -7,6 +7,8 @@ import { Ground } from './04_Ground'
 import { Physics } from './05_Physics'
 import { Models } from './06_Models'
 import { Breath } from './07_Breath'
+import { Move } from './08_Move'
+import { Fight } from './09_Fight/'
 
 export const scenes: Record<string, () => ReactNode> = {
   Init,
@@ -17,4 +19,6 @@ export const scenes: Record<string, () => ReactNode> = {
   Physics,
   Models,
   Breath,
+  Move,
+  Fight,
 }

@@ -1,13 +1,11 @@
-import { Stars } from '@react-three/drei'
-import { useMouseLook } from '../../hooks/useMouseLook'
-import { Sauce } from './Sauce'
+import { CameraControls, Stars } from '@react-three/drei'
+import { Sauce, triggerNextStep } from './Sauce'
 
 export function Mouse() {
-  // useMouseLook()
-
   return (
     <Sauce>
       <Stars />
+      {/* <CameraControls onChange={triggerNextStep} /> */}
     </Sauce>
   )
 }

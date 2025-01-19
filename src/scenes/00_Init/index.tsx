@@ -1,10 +1,10 @@
-import { useOverlay } from '../../hooks/useOverlay'
 import { transitionScene } from '../../app/scene'
 import { Typewriter } from '../../coms/typewriter/Typewriter'
-import { useEnterKey } from '../../hooks/useEnterKey'
+import { useKeyDown } from '../../hooks/useKeyDown'
+import { useOverlay } from '../../hooks/useOverlay'
 
 export function Init() {
-  useEnterKey(() => transitionScene('Title'))
-  useOverlay(<Typewriter>hello</Typewriter>)
+  useKeyDown('Enter', () => transitionScene('Title'))
+  useOverlay(<Typewriter middle>press enter to start</Typewriter>)
   return null
 }

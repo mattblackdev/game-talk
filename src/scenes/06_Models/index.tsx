@@ -1,22 +1,49 @@
+import { CameraControls } from '@react-three/drei'
+import {
+  randomRadialPosition,
+  randomScale,
+  times,
+  uniqueId,
+} from '../../app/utils'
 import { Ground } from '../../coms/Ground'
 import { Rocks } from '../../coms/Rocks'
 import { Sky } from '../../coms/Sky'
 import { Tree } from '../../coms/Tree'
-import { useMouseLook } from '../../hooks/useMouseLook'
 import { Sauce } from './Sauce'
 
 export function Models() {
-  useMouseLook()
   return (
     <Sauce>
       <Sky />
-      {/* <Tree position={[-3, 0, -3]} scale={[2, 2, 2]} />
-      <Rocks
-        position={[12, 0, -15]}
-        scale={[15, 15, 15]}
-        rotation={[0, -0.1, 0]}
-      /> */}
+      <CameraControls />
+      {/* <Scenery /> */}
       <Ground />
     </Sauce>
   )
 }
+
+export function Scenery() {
+  return (
+    <>
+      {/* {smallTrees} */}
+      {/* {tallTrees} */}
+      <Rocks />
+    </>
+  )
+}
+
+const smallTrees = times(200, () => (
+  <Tree
+    key={uniqueId()}
+    scale={randomScale(2, 3)}
+    position={randomRadialPosition({ innerRadius: 70, radius: 80 })}
+  />
+))
+
+const tallTrees = times(100, () => (
+  <Tree
+    key={uniqueId()}
+    scale={randomScale(4, 7)}
+    position={randomRadialPosition({ innerRadius: 81, radius: 99 })}
+  />
+))

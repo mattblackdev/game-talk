@@ -2,9 +2,9 @@ import { useGLTF } from '@react-three/drei'
 
 export function CoinsModel() {
   const { nodes, materials } = useGLTF('/models/coins.glb')
+
   return (
     <mesh
-      dispose={null}
       castShadow
       receiveShadow
       // @ts-ignore

@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { colors } from './colors'
 import { setOverlay } from '../hooks/useOverlay'
 import { scenes } from '../scenes'
+import { Suspense } from 'react'
 
 export type SceneState = {
   key: string
@@ -35,5 +36,9 @@ export function Scene() {
     return null
   }
 
-  return <Scene />
+  return (
+    <Suspense fallback={null}>
+      <Scene />
+    </Suspense>
+  )
 }

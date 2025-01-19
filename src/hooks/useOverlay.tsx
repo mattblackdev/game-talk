@@ -35,24 +35,24 @@ export const setOverlay = ({
 
 export const closeOverlay = () => setOverlay({})
 
-const Container = animated(
-  styled.div({
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    position: 'absolute',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }),
-)
+const Container = styled.div({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  position: 'absolute',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  pointerEvents: 'none',
+})
 
 const Backdrop = animated(
   styled.div({
     width: '100%',
     height: '100%',
     position: 'absolute',
-  }),
+    pointerEvents: 'none',
+  })
 )
 
 const defaultConfig = { duration: 322 }
@@ -62,11 +62,13 @@ export function Overlay() {
   const overlay = useStore((s) => s.children)
   const backgroundColor = useStore((s) => s.color)
   const config = useStore((s) => s.config) ?? defaultConfig
+
   const backdropStyle = useSpring({
     backgroundColor,
     config,
     onRest,
   })
+
   return (
     <>
       <Backdrop style={backdropStyle} />

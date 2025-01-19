@@ -1,12 +1,16 @@
 import { CylinderCollider, RigidBody } from '@react-three/rapier'
 import { colors0x } from '../app/colors'
 
+const depth = 10
+const radius = 100
+const segments = 128
+
 export function Ground() {
   return (
-    <RigidBody type="fixed" colliders={false}>
-      <CylinderCollider args={[0.1, 22]} />
-      <mesh name="ground" receiveShadow position={[0, -0.1, 0]}>
-        <cylinderGeometry args={[22, 22, 0.1, 128]} />
+    <RigidBody type="fixed" position={[0, -depth / 2, 0]}>
+      <CylinderCollider args={[depth / 2, radius]} />
+      <mesh name="ground" receiveShadow>
+        <cylinderGeometry args={[radius, radius, depth, segments]} />
         <meshStandardMaterial color={colors0x.Green} />
       </mesh>
     </RigidBody>
