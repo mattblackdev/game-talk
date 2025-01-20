@@ -30,14 +30,10 @@
     ]
   },
   "dependencies": {
-    "@react-spring/three": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.120.8",
     "@react-three/fiber": "^8.17.12",
     "@react-three/rapier": "^1.5.0",
-    "@theatre/core": "^0.7.2",
-    "@theatre/r3f": "^0.7.2",
-    "@theatre/studio": "^0.7.2",
     "ecctrl": "^1.0.92",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -45,7 +41,6 @@
     "three": "^0.172.0",
     "three-stdlib": "^2.35.7",
     "windups": "^1.2.2",
-    "yuka": "^0.7.8",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -54,7 +49,6 @@
     "@types/react-dom": "^18.3.1",
     "@types/styled-components": "^5.1.34",
     "@types/three": "^0.172.0",
-    "@types/yuka": "^0.7.4",
     "@vitejs/plugin-react": "^4.3.4",
     "globals": "^15.14.0",
     "typescript": "5.7.3",

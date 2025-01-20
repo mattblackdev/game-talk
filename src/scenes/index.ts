@@ -9,6 +9,7 @@ import { Models } from './06_Models'
 import { Breath } from './07_Breath'
 import { Move } from './08_Move'
 import { Fight } from './09_Fight/'
+import { Flight } from './10_Flight/'
 
 export const scenes: Record<string, () => ReactNode> = {
   Init,
@@ -21,4 +22,5 @@ export const scenes: Record<string, () => ReactNode> = {
   Breath,
   Move,
   Fight,
+  Flight,
 }
