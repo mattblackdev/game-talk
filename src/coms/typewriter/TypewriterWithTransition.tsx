@@ -1,7 +1,7 @@
 import { animated, useSpring } from '@react-spring/web'
 import styled from 'styled-components'
 import { colors } from '../../app/colors'
-import { transitionScene } from '../../app/scene'
+import { transitionScene } from '../../hooks/useScene'
 import { Typewriter, TypewriterProps } from './Typewriter'
 
 export type TypewriterWithTransitionProps = TypewriterProps & {

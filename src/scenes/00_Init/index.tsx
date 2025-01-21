@@ -1,7 +1,7 @@
-import { transitionScene } from '../../app/scene'
 import { Typewriter } from '../../coms/typewriter/Typewriter'
 import { useKeyDown } from '../../hooks/useKeyDown'
 import { useOverlay } from '../../hooks/useOverlay'
+import { transitionScene } from '../../hooks/useScene'
 
 export function Init() {
   useKeyDown('Enter', () => transitionScene('Title'))
