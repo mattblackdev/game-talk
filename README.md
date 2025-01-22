@@ -8,28 +8,8 @@ cd game-talk
 npm i
 ```
 
-Update `.env.local` > `VITE_REPO_PATH` to yours
+Update `VITE_REPO_PATH` within `.env.local` to the directory you cloned into
 
 ```
 npm start
 ```
-
-- Lights, Camera, Canvas
-- 3d coordinates x,y,z
-- Sky shader + light
-- Ground (Drei)
-- Models (GLTF)
-- Player input
-- Interaction
-- Particles
-- Physics
-- Dialog
-- Water
-- HUD
-
-## BONUS
-
-Package and Ship with:
-
-- Capacitor for Mobile
-- Electron for Desktop
