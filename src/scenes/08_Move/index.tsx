@@ -4,6 +4,7 @@ import { Ground } from '../../coms/Ground'
 import { Sky } from '../../coms/Sky'
 import { KnightModel } from '../../models/KnightModel'
 import { Sauce } from './Sauce'
+import { Scenery } from '../06_Models'
 
 const keyboardMap = [
   { name: 'forward', keys: ['ArrowUp', 'KeyW'] },
@@ -36,6 +37,7 @@ export function Move() {
   return (
     <Sauce>
       <Sky />
+      <Scenery />
       <KeyboardControls map={keyboardMap}>
         <Ecctrl animated camMoveSpeed={3} camInitDir={{ x: 0, y: -Math.PI }}>
           <EcctrlAnimation
