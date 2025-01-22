@@ -81,14 +81,10 @@ export function Fight() {
 
             minion.rigidBody?.applyImpulse(attackVector, true)
 
-            // 300ms for normal physics
+            useMinionStore.setState({ status: 'dying' })
             setTimeout(() => {
-              useMinionStore.setState({ status: 'dying' })
-              // 700 for animation
-              setTimeout(() => {
-                useMinionStore.setState({ status: 'dead' })
-              }, 700)
-            }, 300)
+              useMinionStore.setState({ status: 'dead' })
+            }, 700)
           }}
         />
 
