@@ -79,7 +79,7 @@ function Minion() {
         .sub(minionPos)
         .setY(0.2)
         .normalize()
-        .multiplyScalar(133)
+        .multiplyScalar(60)
 
       rbRef.current.applyImpulse(moveVector, true)
 
